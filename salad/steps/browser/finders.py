@@ -2,6 +2,8 @@ from lettuce import world
 from salad.logger import logger
 from salad.steps.parsers import pick_to_index
 from splinter.exceptions import ElementDoesNotExist
+from salad.utils import SaladException
+from salad.utils import take_screenshot
 
 ELEMENT_FINDERS = {
     'named "([^"]*)"': "find_by_name",
@@ -26,6 +28,7 @@ PICK_EXPRESSION = "( first| last| \d+..)?"
 def _get_visible_element(finder_function, pick, pattern):
     element = _get_element(finder_function, pick, pattern)
     if not element.visible:
+        take_screenshot()
         raise ElementDoesNotExist
     return element
 
@@ -59,7 +62,7 @@ def _convert_pattern_to_css(finder_function, first, last, find_pattern, tag=""):
         # makes no sense, but is consistent
         pattern += "%s[value='%s']" % (tag, find_pattern, )
     else:
-        raise Exception("Unknown pattern.")
+        raise SaladException("Unknown pattern.")
 
     if first:
         pattern += ":first"

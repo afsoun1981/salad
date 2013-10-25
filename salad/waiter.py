@@ -1,4 +1,5 @@
 import time
+from salad.utils import take_screenshot
 
 POLL_FREQUENCY = 0.5  # How long to sleep inbetween calls to the method
 
@@ -57,4 +58,4 @@ class SaladWaiter(object):
         return self._until(True, method, *args)
 
 class TimeoutException(Exception):
-    pass
+    take_screenshot()

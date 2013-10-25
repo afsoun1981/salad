@@ -6,6 +6,7 @@ from splinter.exceptions import ElementDoesNotExist
 from salad.logger import logger
 from salad.waiter import SaladWaiter
 from salad.waiter import TimeoutException
+from salad.utils import SaladException
 
 # Find and verify that elements exist, have the expected content and attributes (text, classes, ids)
 
@@ -80,7 +81,7 @@ class ExistenceStepsFactory(object):
                 logger.error("%s" % error)
                 logger.error("Encountered error using definition '%s'" %
                              expression.re.pattern)
-                raise
+                raise SaladException()
 
     def check_element(self, finder_function, negate, pick,
                                 find_pattern, wait_time, *args):
