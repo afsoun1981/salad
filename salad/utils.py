@@ -1,5 +1,6 @@
 from lettuce import world
 from random import choice
+from string import ascii_letters
 import datetime
 
 def SaladException(Exception):
@@ -10,7 +11,13 @@ def take_screenshot():
     time = _get_current_timestamp()
     random_suffix = _get_random_string(4)
     picname = time + '_' + random_suffix
-    world.browser.driver.save_screenshot(picname)
+    driver = None
+    try:
+        driver = world.browser.driver
+    except AttributeError:
+        return
+    print "take screenshot"
+    driver.save_screenshot('/tmp/' + picname + '.jpg')
 
 
 def _get_current_timestamp():

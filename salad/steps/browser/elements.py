@@ -7,6 +7,7 @@ from salad.logger import logger
 from salad.waiter import SaladWaiter
 from salad.waiter import TimeoutException
 from salad.utils import SaladException
+from salad.utils import take_screenshot
 
 # Find and verify that elements exist, have the expected content and attributes (text, classes, ids)
 
@@ -74,6 +75,7 @@ class ExistenceStepsFactory(object):
                              expression.re.pattern)
                 message = ("Element not found or assertion failed using pattern '%s' after %s seconds" %
                            (find_pattern, wait_time))
+                take_screenshot()
                 raise AssertionError(message)
             except Exception as error:
                 # BEWARE: only way to get step regular expression
