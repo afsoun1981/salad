@@ -28,6 +28,7 @@ WAIT_TEXT_OPTIONS = {
 }
 ELEMENT_FINDERS = {
     'named "([^"]*)"': By.NAME,
+    'with(?: the)? name "([^"]*)"': By.NAME,
     'with(?: the)? tag name "([^"]*)"': By.TAG_NAME,
     'with(?: the)? class name "([^"]*)"': By.CLASS_NAME,
     'with(?: the)? id "([^"]*)"': By.ID,
