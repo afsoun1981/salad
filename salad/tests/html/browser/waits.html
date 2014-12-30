@@ -1,18 +1,49 @@
 <html>
     <head>
         <title>WAIT HTML</title>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script>
-            setTimeout(function(){
-                document.getElementById("js_block").innerHTML = "Tes"+"t";
-            }, 800);
+            // elements for visibility test
             setTimeout(function(){
                 document.getElementById("js2_block").style.visibility = 'visible';
+            }, 3000);
+            setTimeout(function(){
+                document.getElementById("hidden_link").style.visibility = 'visible';
+            }, 3000);
+            // elements for invisibility test
+            setTimeout(function(){
+                document.getElementById("shown_div").style.visibility = 'hidden';
+            }, 5000);
+            setTimeout(function(){
+                document.getElementById("shown_link").style.visibility = 'hidden';
+            }, 5000);
+            // elements for presence test
+            setTimeout(function(){
+                var ele = '<p id="present" class="present_class" name="present_name">p text</p>'
+                $('#always_there').append(ele);
+            }, 3000);
+            setTimeout(function(){
+                var ele = '<a>www.present.com</a>'
+                $('#always_there').append(ele);
             }, 3000);
         </script>
     </head>
     <body>
+        <!-- elements for presence test will be attached to this one here -->
         <div id="always_there">I'm always here</div>
-        <div id="js_block"></div>
-        <div id="js2_block" style="visibility: hidden;">some text</div>
+        <!-- elements for visibility test -->
+        <a id="hidden_link" href="www.google.de" alt="link to google" style="visibility: hidden;">www.google.de</a>
+        <div id="js2_block"
+             name="js2_name"
+             class="js2_class"
+             style="visibility: hidden;">some text</div>
+        <!-- elements for invisibility test -->
+        <a id="shown_link" href="www.amazon.de" alt="link to amazon">www.amazon.de</a>
+        <fieldset>
+            <legend>mydiv</legend>
+            <mydiv id="shown_div"
+                   name="shown_name"
+                   class="shown_class">some text</mydiv>
+         </fieldset>
     </body>
 </html>
