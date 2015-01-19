@@ -381,12 +381,106 @@ Feature: Ensuring that the 'wait for' steps work
 
     # this time i'm skipping links, because links cannot be selected or unselected
 
-# TODO
 # STALENESS
     Scenario Outline: 21. I can wait for an element to be stale with timeout
+        Given I visit the salad test url "browser/waits.html"
+         When I look around
+         Then I should see the element with the id "stale"
+         When I wait for the element <what> "<selector>" to <wording> within 5 seconds
+         Then I should not see the element with the id "stale"
+
+    Examples:
+        | what                  | selector                | wording   |
+        | with the id           | stale                   | be stale  |
+        | with the name         | stale                   | be stale  |
+        | named                 | stale                   | be stale  |
+        | with the class name   | stale                   | be stale  |
+        | with the tag name     | divstale                | be stale  |
+        | with the css selector | divstale.stale          | be stale  |
+        | with the xpath        | //divstale[@id='stale'] | be stale  |
+        | with the id           | stale                   | be gone   |
+        | with the name         | stale                   | be gone   |
+        | named                 | stale                   | be gone   |
+        | with the class name   | stale                   | be gone   |
+        | with the tag name     | divstale                | be gone   |
+        | with the css selector | divstale.stale          | be gone   |
+        | with the xpath        | //divstale[@id='stale'] | be gone   |
+        | with the id           | stale                   | disappear |
+        | with the name         | stale                   | disappear |
+        | named                 | stale                   | disappear |
+        | with the class name   | stale                   | disappear |
+        | with the tag name     | divstale                | disappear |
+        | with the css selector | divstale.stale          | disappear |
+        | with the xpath        | //divstale[@id='stale'] | disappear |
+
+
     Scenario Outline: 22. I can wait for an element to be stale with standard timeout (10s)
+        Given I visit the salad test url "browser/waits.html"
+         When I look around
+         Then I should see the element with the id "stale"
+         When I wait for the element <what> "<selector>" to <wording>
+         Then I should not see the element with the id "stale"
+
+    Examples:
+        | what                  | selector                | wording   |
+        | with the id           | stale                   | be stale  |
+        | with the name         | stale                   | be stale  |
+        | named                 | stale                   | be stale  |
+        | with the class name   | stale                   | be stale  |
+        | with the tag name     | divstale                | be stale  |
+        | with the css selector | divstale.stale          | be stale  |
+        | with the xpath        | //divstale[@id='stale'] | be stale  |
+        | with the id           | stale                   | be gone   |
+        | with the name         | stale                   | be gone   |
+        | named                 | stale                   | be gone   |
+        | with the class name   | stale                   | be gone   |
+        | with the tag name     | divstale                | be gone   |
+        | with the css selector | divstale.stale          | be gone   |
+        | with the xpath        | //divstale[@id='stale'] | be gone   |
+        | with the id           | stale                   | disappear |
+        | with the name         | stale                   | disappear |
+        | named                 | stale                   | disappear |
+        | with the class name   | stale                   | disappear |
+        | with the tag name     | divstale                | disappear |
+        | with the css selector | divstale.stale          | disappear |
+        | with the xpath        | //divstale[@id='stale'] | disappear |
+
+
     Scenario Outline: 23. I can wait for a link to be stale with timeout
+        Given I visit the salad test url "browser/waits.html"
+         When I look around
+         Then I should see the link with the text "this link will be stale"
+         When I wait for the link with the <what> "<selector>" to <wording> within 5 seconds
+         Then I should not see the link with the text "this link will be stale"
+
+    Examples:
+        | what              | selector                | wording   |
+        | link text         | this link will be stale | be stale  |
+        | partial link text | link will be            | be stale  |
+        | link text         | this link will be stale | be gone   |
+        | partial link text | link will be            | be gone   |
+        | link text         | this link will be stale | disappear |
+        | partial link text | link will be            | disappear |
+
+
     Scenario Outline: 24. I can wait for a link to be stale with standard timeout (10s)
+        Given I visit the salad test url "browser/waits.html"
+         When I look around
+         Then I should see the link with the text "this link will be stale"
+         When I wait for the link with the <what> "<selector>" to <wording>
+         Then I should not see the link with the text "this link will be stale"
+
+    Examples:
+        | what              | selector                | wording   |
+        | link text         | this link will be stale | be stale  |
+        | partial link text | link will be            | be stale  |
+        | link text         | this link will be stale | be gone   |
+        | partial link text | link will be            | be gone   |
+        | link text         | this link will be stale | disappear |
+        | partial link text | link will be            | disappear |
+
+
+# TODO
 # HAVING TEXT
     Scenario Outline: 25. I can wait for an element to have a text with timeout
     Scenario Outline: 26. I can wait for an element to have a text with standard timeout (10s)

@@ -48,6 +48,11 @@
                 $('#val2').attr("selected", false);
                 $('#val3').attr("selected", false);
             }, 3000);
+            // elements for staleness test
+            setTimeout(function(){
+                $("#stale").remove();
+                $("#stalelink").remove();
+            }, 3000);
         </script>
     </head>
     <body>
@@ -80,6 +85,13 @@
                 <option id="val1" name="nam1" class="c1" value="1">option 1</option>
                 <option id="val2" name="nam2" class="c2" selected="selected" value="2">option 2</option>
                 <option id="val3" name="nam3" class="c3" value="3">option 3</option>
+            </select>
+        </fieldset>
+         <!-- element for staleness test -->
+        <fieldset>
+            <legend>staleness test</legend>
+                <divstale id="stale" name="stale" class="stale">this div will be stale</divstale><br/>
+                <a href="amazing.things" id="stalelink">this link will be stale</a>
             </select>
         </fieldset>
     </body>
