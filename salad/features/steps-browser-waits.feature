@@ -13,14 +13,14 @@ Feature: Ensuring that the 'wait for' steps work
          Then I should see the element with the id "js2_block"
 
     Examples:
-            | what                  | selector                  |
-            | with the id           | js2_block                 |
-            | with the name         | js2_name                  |
-            | named                 | js2_name                  |
-            | with the class name   | js2_class                 |
-            | with the tag name     | visdiv                    |
-            | with the css selector | visdiv[id='js2_block']    |
-            | with the xpath        | //visdiv[@id='js2_block'] |
+        | what                  | selector                  |
+        | with the id           | js2_block                 |
+        | with the name         | js2_name                  |
+        | named                 | js2_name                  |
+        | with the class name   | js2_class                 |
+        | with the tag name     | visdiv                    |
+        | with the css selector | visdiv[id='js2_block']    |
+        | with the xpath        | //visdiv[@id='js2_block'] |
 
 
     Scenario Outline: 2. I can wait for an element to appear with standard timeout (10s)
@@ -31,14 +31,14 @@ Feature: Ensuring that the 'wait for' steps work
          Then I should see the element with the id "js2_block"
 
     Examples:
-            | what                  | selector                  |
-            | with the id           | js2_block                 |
-            | with the name         | js2_name                  |
-            | named                 | js2_name                  |
-            | with the class name   | js2_class                 |
-            | with the tag name     | visdiv                    |
-            | with the css selector | visdiv[id='js2_block']    |
-            | with the xpath        | //visdiv[@id='js2_block'] |
+        | what                  | selector                  |
+        | with the id           | js2_block                 |
+        | with the name         | js2_name                  |
+        | named                 | js2_name                  |
+        | with the class name   | js2_class                 |
+        | with the tag name     | visdiv                    |
+        | with the css selector | visdiv[id='js2_block']    |
+        | with the xpath        | //visdiv[@id='js2_block'] |
 
 
     Scenario Outline: 3. I can wait for a link to appear with timeout
@@ -51,9 +51,9 @@ Feature: Ensuring that the 'wait for' steps work
           And I should see the link with the partial text "google"
 
     Examples:
-            | what              | selector      |
-            | link text         | www.google.de |
-            | partial link text | google        |
+        | what              | selector      |
+        | link text         | www.google.de |
+        | partial link text | google        |
 
 
     Scenario Outline: 4. I can wait for a link to appear with standard timeout (10s)
@@ -66,9 +66,9 @@ Feature: Ensuring that the 'wait for' steps work
           And I should see the link with the partial text "google"
 
     Examples:
-            | what              | selector      |
-            | link text         | www.google.de |
-            | partial link text | google        |
+        | what              | selector      |
+        | link text         | www.google.de |
+        | partial link text | google        |
 
 
 # INVISIBILITY
@@ -80,14 +80,14 @@ Feature: Ensuring that the 'wait for' steps work
          Then I should not see the element with the id "shown_div"
 
     Examples:
-            | what                  | selector                 |
-            | with the id           | shown_div                |
-            | with the name         | shown_name               |
-            | named                 | shown_name               |
-            | with the class name   | shown_class              |
-            | with the tag name     | mydiv                    |
-            | with the css selector | mydiv[id='shown_div']    |
-            | with the xpath        | //mydiv[@id='shown_div'] |
+        | what                  | selector                 |
+        | with the id           | shown_div                |
+        | with the name         | shown_name               |
+        | named                 | shown_name               |
+        | with the class name   | shown_class              |
+        | with the tag name     | mydiv                    |
+        | with the css selector | mydiv[id='shown_div']    |
+        | with the xpath        | //mydiv[@id='shown_div'] |
 
 
     Scenario Outline: 6. I can wait for an element to disappear with standard timeout (10s)
@@ -98,14 +98,14 @@ Feature: Ensuring that the 'wait for' steps work
          Then I should not see the element with the id "shown_div"
 
     Examples:
-            | what                  | selector                 |
-            | with the id           | shown_div                |
-            | with the name         | shown_name               |
-            | named                 | shown_name               |
-            | with the class name   | shown_class              |
-            | with the tag name     | mydiv                    |
-            | with the css selector | mydiv[id='shown_div']    |
-            | with the xpath        | //mydiv[@id='shown_div'] |
+        | what                  | selector                 |
+        | with the id           | shown_div                |
+        | with the name         | shown_name               |
+        | named                 | shown_name               |
+        | with the class name   | shown_class              |
+        | with the tag name     | mydiv                    |
+        | with the css selector | mydiv[id='shown_div']    |
+        | with the xpath        | //mydiv[@id='shown_div'] |
 
 
     Scenario Outline: 7. I can wait for a link to disappear with timeout
@@ -118,9 +118,9 @@ Feature: Ensuring that the 'wait for' steps work
           And I should not see the link with the partial text "amazon"
 
     Examples:
-            | what              | selector      |
-            | link text         | www.amazon.de |
-            | partial link text | amazon        |
+        | what              | selector      |
+        | link text         | www.amazon.de |
+        | partial link text | amazon        |
 
 
     Scenario Outline: 8. I can wait for a link to disappear with standard timeout (10s)
@@ -133,10 +133,9 @@ Feature: Ensuring that the 'wait for' steps work
           And I should not see the link with the partial text "amazon"
 
     Examples:
-            | what              | selector      |
-            | link text         | www.amazon.de |
-            | partial link text | amazon        |
-
+        | what              | selector      |
+        | link text         | www.amazon.de |
+        | partial link text | amazon        |
 
 
 # PRESENCE
@@ -148,14 +147,14 @@ Feature: Ensuring that the 'wait for' steps work
          Then I should see the element with the id "present"
 
     Examples:
-            | what                  | selector           |
-            | with the id           | present            |
-            | with the name         | present_name       |
-            | named                 | present_name       |
-            | with the class name   | present_class      |
-            | with the tag name     | p                  |
-            | with the css selector | p[id='present']    |
-            | with the xpath        | //p[@id='present'] |
+        | what                  | selector           |
+        | with the id           | present            |
+        | with the name         | present_name       |
+        | named                 | present_name       |
+        | with the class name   | present_class      |
+        | with the tag name     | p                  |
+        | with the css selector | p[id='present']    |
+        | with the xpath        | //p[@id='present'] |
 
 
     Scenario Outline: 10. I can wait for an element to be present with standard timeout (10s)
@@ -166,14 +165,14 @@ Feature: Ensuring that the 'wait for' steps work
          Then I should see the element with the id "present"
 
     Examples:
-            | what                  | selector           |
-            | with the id           | present            |
-            | with the name         | present_name       |
-            | named                 | present_name       |
-            | with the class name   | present_class      |
-            | with the tag name     | p                  |
-            | with the css selector | p[id='present']    |
-            | with the xpath        | //p[@id='present'] |
+        | what                  | selector           |
+        | with the id           | present            |
+        | with the name         | present_name       |
+        | named                 | present_name       |
+        | with the class name   | present_class      |
+        | with the tag name     | p                  |
+        | with the css selector | p[id='present']    |
+        | with the xpath        | //p[@id='present'] |
 
 
     Scenario Outline: 11. I can wait for a link to be present with timeout
@@ -186,9 +185,9 @@ Feature: Ensuring that the 'wait for' steps work
           And I should see the link with the partial text "present"
 
     Examples:
-            | what              | selector        |
-            | link text         | www.present.com |
-            | partial link text | present         |
+        | what              | selector        |
+        | link text         | www.present.com |
+        | partial link text | present         |
 
 
     Scenario Outline: 12. I can wait for a link to be present with standard timeout (10s)
@@ -201,9 +200,9 @@ Feature: Ensuring that the 'wait for' steps work
           And I should see the link with the partial text "present"
 
     Examples:
-            | what              | selector      |
-            | link text         | www.present.com |
-            | partial link text | present         |
+        | what              | selector        |
+        | link text         | www.present.com |
+        | partial link text | present         |
 
 
 # CLICKABLE
@@ -218,14 +217,14 @@ Feature: Ensuring that the 'wait for' steps work
          Then I should see that the element with the id "always_there" has the text "clicked button"
 
     Examples:
-            | what                  | selector |
-            | with the id           | button   |
-            | with the name         | button   |
-            | named                 | button   |
-            | with the class name   | button   |
-            | with the tag name     | button   |
-            | with the css selector | button   |
-            | with the xpath        | //button |
+        | what                  | selector |
+        | with the id           | button   |
+        | with the name         | button   |
+        | named                 | button   |
+        | with the class name   | button   |
+        | with the tag name     | button   |
+        | with the css selector | button   |
+        | with the xpath        | //button |
 
 
     Scenario Outline: 14. I can wait for an element to be clickable with standard timeout (10s)
@@ -239,14 +238,14 @@ Feature: Ensuring that the 'wait for' steps work
          Then I should see that the element with the id "always_there" has the text "clicked button"
 
     Examples:
-            | what                  | selector |
-            | with the id           | button   |
-            | with the name         | button   |
-            | named                 | button   |
-            | with the class name   | button   |
-            | with the tag name     | button   |
-            | with the css selector | button   |
-            | with the xpath        | //button |
+        | what                  | selector |
+        | with the id           | button   |
+        | with the name         | button   |
+        | named                 | button   |
+        | with the class name   | button   |
+        | with the tag name     | button   |
+        | with the css selector | button   |
+        | with the xpath        | //button |
 
 
     # it actually does not make much sense to use 'clickable' with links, because
@@ -269,9 +268,9 @@ Feature: Ensuring that the 'wait for' steps work
          Then I should see that the element with the id "always_there" has the text "clicked link"
 
     Examples:
-            | what              | selector      |
-            | link text         | disabled link |
-            | partial link text | disabled      |
+        | what              | selector      |
+        | link text         | disabled link |
+        | partial link text | disabled      |
 
 
     Scenario Outline: 16. I can wait for a link to be clickable with standard timeout (10s)
@@ -289,9 +288,9 @@ Feature: Ensuring that the 'wait for' steps work
          Then I should see that the element with the id "always_there" has the text "clicked link"
 
     Examples:
-            | what              | selector      |
-            | link text         | disabled link |
-            | partial link text | disabled      |
+        | what              | selector      |
+        | link text         | disabled link |
+        | partial link text | disabled      |
 
 
 # (UN)SELECTED
@@ -306,14 +305,14 @@ Feature: Ensuring that the 'wait for' steps work
           And I should not see the element with the css selector "select option[value='2'][selected='selected']"
 
     Examples:
-            | what                  | selector             |
-            | with the id           | val1                 |
-            | with the name         | nam1                 |
-            | named                 | nam1                 |
-            | with the class name   | c1                   |
-            | with the tag name     | option               |
-            | with the css selector | .c1                  |
-            | with the xpath        | //option[@id='val1'] |
+        | what                  | selector             |
+        | with the id           | val1                 |
+        | with the name         | nam1                 |
+        | named                 | nam1                 |
+        | with the class name   | c1                   |
+        | with the tag name     | option               |
+        | with the css selector | .c1                  |
+        | with the xpath        | //option[@id='val1'] |
 
 
     Scenario Outline: 18. I can wait for an element to be selected with standard timeout (10s)
@@ -327,14 +326,14 @@ Feature: Ensuring that the 'wait for' steps work
           And I should not see the element with the css selector "select option[value='2'][selected='selected']"
 
     Examples:
-            | what                  | selector             |
-            | with the id           | val1                 |
-            | with the name         | nam1                 |
-            | named                 | nam1                 |
-            | with the class name   | c1                   |
-            | with the tag name     | option               |
-            | with the css selector | .c1                  |
-            | with the xpath        | //option[@id='val1'] |
+        | what                  | selector             |
+        | with the id           | val1                 |
+        | with the name         | nam1                 |
+        | named                 | nam1                 |
+        | with the class name   | c1                   |
+        | with the tag name     | option               |
+        | with the css selector | .c1                  |
+        | with the xpath        | //option[@id='val1'] |
 
 
     Scenario Outline: 19. I can wait for an element to be unselected with timeout
@@ -348,14 +347,15 @@ Feature: Ensuring that the 'wait for' steps work
           And I should not see the element with the css selector "select option[value='2'][selected='selected']"
 
     Examples:
-            | what                  | selector             |
-            | with the id           | val2                 |
-            | with the name         | nam2                 |
-            | named                 | nam2                 |
-            | with the class name   | c2                   |
-            # cannot re-use tag name since the first matching element is used
-            | with the css selector | .c2                  |
-            | with the xpath        | //option[@id='val2'] |
+        | what                  | selector             |
+        | with the id           | val2                 |
+        | with the name         | nam2                 |
+        | named                 | nam2                 |
+        | with the class name   | c2                   |
+        # cannot re-use tag name since the first matching element with the
+        # tag name 'option' is used, and that is the one in scenarios 17 and 18
+        | with the css selector | .c2                  |
+        | with the xpath        | //option[@id='val2'] |
 
 
     Scenario Outline: 20. I can wait for an element to be unselected with standard timeout (10s)
@@ -369,14 +369,15 @@ Feature: Ensuring that the 'wait for' steps work
           And I should not see the element with the css selector "select option[value='2'][selected='selected']"
 
     Examples:
-            | what                  | selector             |
-            | with the id           | val2                 |
-            | with the name         | nam2                 |
-            | named                 | nam2                 |
-            | with the class name   | c2                   |
-            # cannot re-use tag name since the first matching element is used
-            | with the css selector | .c2                  |
-            | with the xpath        | //option[@id='val2'] |
+        | what                  | selector             |
+        | with the id           | val2                 |
+        | with the name         | nam2                 |
+        | named                 | nam2                 |
+        | with the class name   | c2                   |
+        # cannot re-use tag name since the first matching element with the
+        # tag name 'option' is used, and that is the one in scenarios 17 and 18
+        | with the css selector | .c2                  |
+        | with the xpath        | //option[@id='val2'] |
 
     # this time i'm skipping links, because links cannot be selected or unselected
 
