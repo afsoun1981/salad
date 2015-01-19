@@ -491,3 +491,35 @@ Feature: Ensuring that the 'wait for' steps work
     Scenario Outline: 30. I can wait for an element to have a value with standard timeout (10s)
     Scenario Outline: 31. I can wait for a link to have a value with timeout
     Scenario Outline: 32. I can wait for a link to have a value with standard timeout (10s)
+
+
+# WAIT FOR ALERT
+    Scenario Outline: 33. I can wait for an alert to appear with timeout
+        Given I visit the salad test url "browser/waits.html"
+         When I look around
+          And I run the javascript "want_alert = true;"
+         Then I should not see an alert
+         When I wait until <wording> an alert within 5 seconds
+         Then I should see an alert
+
+    Examples:
+        | wording  |
+        | I see    |
+        | there is |
+        | I see    |
+        | there is |
+
+    Scenario Outline: 34. I can wait for an alert to appear with standard timeout (10s)
+        Given I visit the salad test url "browser/waits.html"
+         When I look around
+          And I run the javascript "want_alert = true;"
+         Then I should not see an alert
+         When I wait until <wording> an alert
+         Then I should see an alert
+
+    Examples:
+        | wording  |
+        | I see    |
+        | there is |
+        | I see    |
+        | there is |

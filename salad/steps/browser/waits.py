@@ -208,3 +208,16 @@ for condition_string, expected_condition in WAIT_STALE_OPTIONS.iteritems():
         globals()[name] = (_wait_for_stale_generator(finder_string, find_by,
                                                      condition_string,
                                                      expected_condition))
+
+
+# WAIT FOR AN ALERT
+@step(r'wait until (?:I see|there is) an alert(?: within (\d+) seconds)?$')
+def wait_for_alert(step, wait_time):
+    wait_time = int(wait_time or 10)
+    wait = WebDriverWait(world.browser.driver, wait_time)
+    try:
+        wait.until(EC.alert_is_present())
+    except TimeoutException as e:
+        msg = ("The alert did not show up within %s seconds. "
+               "The error message was: '%s'." % (wait_time, e))
+        raise AssertionError(msg)
