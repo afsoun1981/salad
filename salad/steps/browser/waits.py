@@ -3,7 +3,7 @@
 import re
 
 from lettuce import step, world
-
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -44,17 +44,21 @@ THING_STRING = (
 
 
 def _construct_name(find_by, condition_string):
-        name = "wait_for_element_by_%s_to_%s" % (find_by, condition_string)
+        name = "wait_for_element_by_{finder}_to_{have_condition}".format(
+            finder=find_by, have_condition=condition_string)
         name = name.replace(" ", "_")
         name = re.sub(r'("\(.*\)")', "", name)
+        name = name.rstrip("_")
         return name
 
 
 # WAIT FOR ELEMENT TO BE (UN)SELECTED
 def _wait_for_selected_generator(finder_string, find_by, condition_string,
                                  expected_condition, expected_selection_state):
-    pattern = (r'wait for the %s %s to %s(?: within (\d+) seconds)?$' %
-               (THING_STRING, finder_string, condition_string))
+    pattern = (r'wait for the {thing} {with_the_finder} to '
+               '{have_selection_state}(?: within (\d+) seconds)?$'.format(
+                   thing=THING_STRING, with_the_finder=finder_string,
+                   have_selection_state=condition_string))
 
     @step(pattern)
     def _this_step(step, selector, wait_time):
@@ -63,7 +67,7 @@ def _wait_for_selected_generator(finder_string, find_by, condition_string,
         try:
             wait.until(expected_condition((find_by, selector),
                                           expected_selection_state))
-        except Exception as e:
+        except TimeoutException as e:
             msg = ("The element %s '%s' was not '%s' within %s seconds. "
                    "The error message was: '%s'." %
                    (finder_string, selector, condition_string, wait_time, e))
@@ -74,8 +78,7 @@ def _wait_for_selected_generator(finder_string, find_by, condition_string,
 # build the steps that wait for an element to have a certain selection state
 for condition_string, ec_tuple in WAIT_SELECTED_OPTIONS.iteritems():
     for finder_string, find_by in ELEMENT_FINDERS.iteritems():
-        expected_condition = ec_tuple[0]
-        expected_selection_state = ec_tuple[1]
+        expected_condition, expected_selection_state = ec_tuple
         _wait_for_selected_generator(
             finder_string, find_by,
             condition_string, expected_condition, expected_selection_state
@@ -90,8 +93,10 @@ for condition_string, ec_tuple in WAIT_SELECTED_OPTIONS.iteritems():
 # WAIT FOR ELEMENT TO HAVE A CERTAIN CONDITION
 def _wait_for_generator(finder_string, find_by,
                         condition_string, expected_condition):
-    pattern = (r'wait for the %s %s to %s(?: within (\d+) seconds)?$' %
-               (THING_STRING, finder_string, condition_string))
+    pattern = (r'wait for the {thing} {with_the_finder} to {have_condition}'
+               '(?: within (\d+) seconds)?$'.format(
+                   thing=THING_STRING, with_the_finder=finder_string,
+                   have_condition=condition_string))
 
     @step(pattern)
     def _this_step(step, selector, wait_time):
@@ -99,7 +104,7 @@ def _wait_for_generator(finder_string, find_by,
         wait = WebDriverWait(world.browser.driver, wait_time)
         try:
             wait.until(expected_condition((find_by, selector)))
-        except Exception as e:
+        except TimeoutException as e:
             msg = ("The element %s '%s' was not '%s' within %s seconds. "
                    "The error message was: '%s'." %
                    (finder_string, selector, condition_string, wait_time, e))
@@ -121,8 +126,10 @@ for condition_string, expected_condition in WAIT_OPTIONS.iteritems():
 # WAIT FOR ELEMENT TO HAVE A CERTAIN TEXT/VALUE
 def _wait_for_text_generator(finder_string, find_by,
                              condition_string, expected_condition):
-    pattern = (r'wait for the %s %s to %s(?: within (\d+) seconds)?$' %
-               (THING_STRING, finder_string, condition_string))
+    pattern = (r'wait for the {thing} {with_the_finder} to '
+               '{have_text_or_value}(?: within (\d+) seconds)?$'.format(
+                   thing=THING_STRING, with_the_finder=finder_string,
+                   have_text_or_value=condition_string))
 
     @step(pattern)
     def _this_step(step, selector, text, wait_time):
@@ -130,7 +137,7 @@ def _wait_for_text_generator(finder_string, find_by,
         wait = WebDriverWait(world.browser.driver, wait_time)
         try:
             wait.until(expected_condition((find_by, selector), text))
-        except Exception as e:
+        except TimeoutException as e:
             msg = ("The element %s '%s' did not %s '%s' within %s seconds. "
                    "The error message was: '%s'." %
                    (finder_string, selector, condition_string, text,
