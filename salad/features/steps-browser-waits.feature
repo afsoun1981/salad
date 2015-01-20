@@ -586,35 +586,3 @@ Feature: Ensuring that the 'wait for' steps work
         | what              | selector            |
         | link text         | value changing link |
         | partial link text | changing            |
-
-
-# WAIT FOR ALERT
-    Scenario Outline: 33. I can wait for an alert to appear with timeout
-        Given I visit the salad test url "browser/waits.html"
-         When I look around
-          And I run the javascript "want_alert = true;"
-         Then I should not see an alert
-         When I wait until <wording> an alert within 5 seconds
-         Then I should see an alert
-
-    Examples:
-        | wording  |
-        | I see    |
-        | there is |
-        | I see    |
-        | there is |
-
-    Scenario Outline: 34. I can wait for an alert to appear with standard timeout (10s)
-        Given I visit the salad test url "browser/waits.html"
-         When I look around
-          And I run the javascript "want_alert = true;"
-         Then I should not see an alert
-         When I wait until <wording> an alert
-         Then I should see an alert
-
-    Examples:
-        | wording  |
-        | I see    |
-        | there is |
-        | I see    |
-        | there is |
