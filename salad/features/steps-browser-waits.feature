@@ -480,17 +480,112 @@ Feature: Ensuring that the 'wait for' steps work
         | partial link text | link will be            | disappear |
 
 
-# TODO
 # HAVING TEXT
     Scenario Outline: 25. I can wait for an element to have a text with timeout
+        Given I visit the salad test url "browser/waits.html"
+         When I look around
+         Then I should see that the element with the id "text" has the text "original text"
+         When I wait for the element <what> "<selector>" to have the text "other text" within 5 seconds
+         Then I should see that the element with the id "text" has the text "other text"
+
+    Examples:
+        | what                  | selector              |
+        | with the id           | text                  |
+        | with the name         | text                  |
+        | named                 | text                  |
+        | with the class name   | text                  |
+        | with the tag name     | divtext               |
+        | with the css selector | divtext.text          |
+        | with the xpath        | //divtext[@id='text'] |
+
+
     Scenario Outline: 26. I can wait for an element to have a text with standard timeout (10s)
-    Scenario Outline: 27. I can wait for a link to have a text with timeout
-    Scenario Outline: 28. I can wait for a link to have a text with standard timeout (10s)
+        Given I visit the salad test url "browser/waits.html"
+         When I look around
+         Then I should see that the element with the id "text" has the text "original text"
+         When I wait for the element <what> "<selector>" to have the text "other text"
+         Then I should see that the element with the id "text" has the text "other text"
+
+    Examples:
+        | what                  | selector              |
+        | with the id           | text                  |
+        | with the name         | text                  |
+        | named                 | text                  |
+        | with the class name   | text                  |
+        | with the tag name     | divtext               |
+        | with the css selector | divtext.text          |
+        | with the xpath        | //divtext[@id='text'] |
+
+
+    # 27 and 28 are impossible, because selenium will keep looking for the element with
+    # some link text. once the link text has changed, the element can no longer be found.
+    # As long as there is no method that accepts the object itself instead of the locator, this
+    # will not work. Right now there is only 'text_to_be_present_in_element' which uses the locator.
+    Scenario Outline: 27. unused - I can wait for a link to have a text with timeout
+    Scenario Outline: 28. unused - I can wait for a link to have a text with standard timeout (10s)
+
+
 # HAVING VALUE
     Scenario Outline: 29. I can wait for an element to have a value with timeout
+        Given I visit the salad test url "browser/waits.html"
+         When I look around
+         Then I should see that the value of the element with the id "value" is "original value"
+         When I wait for the element <what> "<selector>" to have the value "other value" within 5 seconds
+         Then I should see that the value of the element with the id "value" is "other value"
+
+    Examples:
+        | what                  | selector             |
+        | with the id           | value                |
+        | with the name         | value                |
+        | named                 | value                |
+        | with the class name   | value                |
+        | with the tag name     | input                |
+        | with the css selector | input.value          |
+        | with the xpath        | //input[@id='value'] |
+
+
     Scenario Outline: 30. I can wait for an element to have a value with standard timeout (10s)
+        Given I visit the salad test url "browser/waits.html"
+         When I look around
+         Then I should see that the value of the element with the id "value" is "original value"
+         When I wait for the element <what> "<selector>" to have the value "other value"
+         Then I should see that the value of the element with the id "value" is "other value"
+
+    Examples:
+        | what                  | selector             |
+        | with the id           | value                |
+        | with the name         | value                |
+        | named                 | value                |
+        | with the class name   | value                |
+        | with the tag name     | input                |
+        | with the css selector | input.value          |
+        | with the xpath        | //input[@id='value'] |
+
+
     Scenario Outline: 31. I can wait for a link to have a value with timeout
+        Given I visit the salad test url "browser/waits.html"
+         When I look around
+         Then I should see that the value of the element with the id "linkvalue" is "original value"
+         When I wait for the link with the <what> "<selector>" to have the value "other value" within 5 seconds
+         Then I should see that the value of the element with the id "linkvalue" is "other value"
+
+    Examples:
+        | what              | selector            |
+        | link text         | value changing link |
+        | partial link text | changing            |
+
+
     Scenario Outline: 32. I can wait for a link to have a value with standard timeout (10s)
+        Given I visit the salad test url "browser/waits.html"
+         When I look around
+         Then I should see that the value of the element with the id "linkvalue" is "original value"
+         When I wait for the link with the <what> "<selector>" to have the value "other value"
+         Then I should see that the value of the element with the id "linkvalue" is "other value"
+
+    Examples:
+        | what              | selector            |
+        | link text         | value changing link |
+        | partial link text | changing            |
 
 
 # WAIT FOR ALERT
