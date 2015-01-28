@@ -1,3 +1,9 @@
+0.4.14-beanqueen-3
+-----
+
+* added support for selenium waits
+
+
 0.4.14-beanqueen-2
 -----
 
@@ -12,6 +18,7 @@
 * some pep8, indentation, and general cleanup
 * some small bug fixes
 * started with scenario numbering
+
 
 0.4.14-beanqueen-1
 -----
