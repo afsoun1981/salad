@@ -6,3 +6,4 @@ from salad.steps.browser.javascript import *
 from salad.steps.browser.mouse import *
 from salad.steps.browser.navigation import *
 from salad.steps.browser.page import *
+from salad.steps.browser.waits import *

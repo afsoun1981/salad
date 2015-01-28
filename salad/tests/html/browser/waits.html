@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>WAIT HTML</title>
+        <style>
+            fieldset {
+                margin-left: 200px;
+                width: 150px;
+                background-color: yellow;
+            }
+        </style>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript">
+            // elements for visibility test
+            setTimeout(function(){
+                document.getElementById("js2_block").style.visibility = 'visible';
+                document.getElementById("hidden_link").style.visibility = 'visible';
+            }, 3000);
+            // elements for invisibility test
+            setTimeout(function(){
+                document.getElementById("shown_div").style.visibility = 'hidden';
+                document.getElementById("shown_link").style.visibility = 'hidden';
+            }, 5000);
+            // elements for presence test
+            setTimeout(function(){
+                var ele = '<p id="present" class="present_class" name="present_name">p text</p>';
+                $('#always_there').append(ele);
+                var ele = '<a>www.present.com</a>';
+                $('#always_there').append(ele);
+            }, 3000);
+            // elements for clickability test
+            setTimeout(function(){
+                $('#button').attr("disabled", false);
+                $('#button').text("enabled button");
+                $('#button').addClass('enabled');
+                $('#link').attr("disabled", false);
+                $('#link').text("enabled link");
+                $('#link').addClass('enabled');
+            }, 6000);
+            $(function () {
+                var want_alert = false;
+                $('#link').click(function (e) {
+                    e.preventDefault();
+                    if ($(this).hasClass('enabled')) {
+                        $('#always_there').text('clicked link');
+                    }
+                });
+                $('#button').click(function (e) {
+                    if ($(this).hasClass('enabled')) {
+                        $('#always_there').text('clicked button');
+                    }
+                });
+            });
+            // elements for selected test
+            setTimeout(function(){
+                $('#val1').attr("selected", true);
+                $('#val2').attr("selected", false);
+                $('#val3').attr("selected", false);
+            }, 3000);
+            // elements for staleness test
+            setTimeout(function(){
+                $("#stale").remove();
+                $("#stalelink").remove();
+            }, 3000);
+            // element for alert test
+            setTimeout(function(){
+                if (want_alert) {
+                    alert('hi! i\'m an unexpected alert');
+                }
+            }, 4000);
+            // element for text/value test
+            setTimeout(function(){
+                $('#text').text('other text');
+                $('#textlink').text('other linktext');
+                $('#value').val('other value');
+                $('#linkvalue').attr('value', 'other value');
+            }, 3000);
+        </script>
+    </head>
+    <body>
+        <!-- elements for presence test will be attached to this one here -->
+        <fieldset>
+            <legend>presence test</legend>
+            <div id="always_there">I'm always here</div>
+        </fieldset>
+
+        <!-- elements for visibility test -->
+        <fieldset>
+            <legend>visibility test</legend>
+            <a id="hidden_link" href="www.google.de" alt="link to google" style="visibility: hidden;">www.google.de</a><br/>
+            <visdiv id="js2_block"
+                name="js2_name"
+                class="js2_class"
+                style="visibility: hidden;">some text
+            </visdiv>
+        </fieldset>
+
+        <!-- elements for invisibility test -->
+        <fieldset>
+            <legend>test vor invisibility</legend>
+            <a id="shown_link" href="www.amazon.de" alt="link to amazon">www.amazon.de</a><br/>
+            <mydiv id="shown_div"
+                   name="shown_name"
+                   class="shown_class">some text
+            </mydiv>
+        </fieldset>
+
+        <!-- element for clickability test -->
+        <fieldset>
+            <legend>clickability test</legend>
+            <button disabled="disabled" id="button" class="button" name="button">disabled button</button><br/>
+            <a disabled="disabled" href="mouse.html" id="link" name="link" class="link">disabled link</a>
+        </fieldset>
+
+         <!-- element for selecting test -->
+        <fieldset>
+            <legend>selected test</legend>
+            <select name="select" id="select" class="select">
+                <option id="val1" name="nam1" class="c1" value="1">option 1</option>
+                <option id="val2" name="nam2" class="c2" selected="selected" value="2">option 2</option>
+                <option id="val3" name="nam3" class="c3" value="3">option 3</option>
+            </select>
+        </fieldset>
+
+         <!-- element for staleness test -->
+        <fieldset>
+            <legend>staleness test</legend>
+            <divstale id="stale" name="stale" class="stale">this div will be stale</divstale><br/>
+            <a href="amazing.things" id="stalelink">this link will be stale</a>
+        </fieldset>
+
+         <!-- element for text/value test -->
+        <fieldset>
+            <legend>text/value test</legend>
+            <divtext id="text" name="text" class="text">original text</divtext><br/>
+            <a href="amazing.things" id="textlink">original linktext</a><br/>
+            <input id="value" name="value" class="value" value="original value"></input><br/>
+            <a id="linkvalue" href="amazing.things" value="original value">value changing link</a>
+        </fieldset>
+    </body>
+</html>

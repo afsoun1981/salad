@@ -150,3 +150,36 @@ Feature: Ensuring that the alert/prompt steps work
         | Alert   | alert       |
         | Prompt  | prompt      |
         | Confirm | alert       |
+
+
+# WAIT FOR ALERT
+    Scenario Outline: 12. I can wait for an alert to appear with timeout
+        Given I visit the salad test url "browser/waits.html"
+         When I look around
+          And I run the javascript "want_alert = true;"
+         Then I should not see an alert
+         When I wait until <wording> an alert within 5 seconds
+         Then I should see an alert
+
+    Examples:
+        | wording  |
+        | I see    |
+        | there is |
+        | I see    |
+        | there is |
+
+
+    Scenario Outline: 13. I can wait for an alert to appear with standard timeout (10s)
+        Given I visit the salad test url "browser/waits.html"
+         When I look around
+          And I run the javascript "want_alert = true;"
+         Then I should not see an alert
+         When I wait until <wording> an alert
+         Then I should see an alert
+
+    Examples:
+        | wording  |
+        | I see    |
+        | there is |
+        | I see    |
+        | there is |
