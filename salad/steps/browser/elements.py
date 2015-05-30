@@ -96,7 +96,7 @@ class ExistenceStepsFactory(object):
                              negate, pick, find_pattern, wait_time, *args)
             except TimeoutException as t:
                 # BEWARE: only way to get step regular expression
-                expression, func = step._get_match(True)
+                expression, func = step._get_match()
                 logger.error(t.message)
                 logger.error("Encountered error using definition '%s'" %
                              expression.re.pattern)
@@ -106,7 +106,7 @@ class ExistenceStepsFactory(object):
                 raise AssertionError(message)
             except Exception as error:
                 # BEWARE: only way to get step regular expression
-                expression, func = step._get_match(True)
+                expression, func = step._get_match()
                 logger.error("%s" % error)
                 logger.error("Encountered error using definition '%s'" %
                              expression.re.pattern)
